@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>View Food</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- 🧾 List of Food Items -->
+  <ion-list *ngIf="foodItems.length > 0; else noData">
+    <ion-item *ngFor="let item of foodItems">
+      <img
+    *ngIf="item.image"
+    [src]="'http://localhost:5000/uploads/' + item.image"
+    class="food-image"
+  />
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Expiry: {{ item.expiryDate | date:'yyyy-MM-dd' }}</p>
+        <p>Status: 
+          <strong [style.color]="item.donated ? 'green' : 'orange'">
+            {{ item.donated ? 'Donated' : 'Stored' }}
+          </strong>
+        </p>
+
+        <!-- ✅ Image (if uploaded) -->
+        
+      </ion-label>
+
+      <!-- 📝 Edit button -->
+      <ion-button fill="clear" color="primary" (click)="startEdit(item)">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+
+      <!-- 🗑️ Delete button -->
+      <ion-button fill="clear" color="danger" (click)="confirmDelete(item._id)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- ✨ Edit Form -->
+  <ion-card *ngIf="editingItem">
+    <ion-card-header>
+      <ion-card-title>Edit Food Item</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Food Name</ion-label>
+        <ion-input [(ngModel)]="editingItem.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantity</ion-label>
+        <ion-input type="number" [(ngModel)]="editingItem.quantity"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Expiry Date</ion-label>
+        <ion-datetime
+          [(ngModel)]="editingItem.expiryDate"
+          display-format="YYYY-MM-DD"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-button expand="block" (click)="saveEditedItem()">Save</ion-button>
+      <ion-button expand="block" color="medium" (click)="editingItem = null">Cancel</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 🙁 No Items Fallback -->
+  <ng-template #noData>
+    <p>No food items found. Try adding some first!</p>
+  </ng-template>
+</ion-content>

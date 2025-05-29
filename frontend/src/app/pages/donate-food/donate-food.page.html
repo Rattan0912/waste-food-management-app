@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Donate Baked Goods</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>List Your Leftover Bakes</h2>
+  <form (ngSubmit)="submitBakeryItem()" #bakeForm="ngForm">
+
+    <ion-item>
+      <ion-label position="floating">Item Name</ion-label>
+      <ion-input [(ngModel)]="bakeItem.name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea [(ngModel)]="bakeItem.description" name="description" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input type="number" [(ngModel)]="bakeItem.quantity" name="quantity" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Expiry Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="bakeItem.expiryDate" name="expiryDate" required></ion-datetime>
+    </ion-item>
+
+    <!-- ✅ Image Upload Field -->
+    <ion-item>
+      <ion-label>Upload Image</ion-label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!bakeForm.form.valid">
+      Submit Baked Item
+    </ion-button>
+
+  </form>
+
+  <hr>
+
+  <h2>Available Donations</h2>
+  <ion-list *ngIf="availableItems.length > 0; else noBakes">
+    <ion-item *ngFor="let item of availableItems">
+      <img
+        *ngIf="item.image"
+        [src]="'http://localhost:5000/uploads/' + item.image"
+        class="food-image"
+      />
+      <ion-label>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Pickup Before: {{ item.expiryDate | date:'yyyy-MM-dd' }}</p>
+      </ion-label>
+
+      <!-- ✅ Show Image if Available -->
+      
+
+      <ion-button fill="outline" color="success" (click)="bookItem(item._id)" [disabled]="item.booked">
+        {{ item.booked ? 'Booked' : 'Book' }}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noBakes>
+    <p>No baked items available for booking.</p>
+  </ng-template>
+</ion-content>

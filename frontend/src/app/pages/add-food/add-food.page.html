@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Food</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="submitFood()" #foodForm="ngForm">
+
+    <ion-item>
+      <ion-label position="floating">Food Name</ion-label>
+      <ion-input [(ngModel)]="food.name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input type="number" [(ngModel)]="food.quantity" name="quantity" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Expiry Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="food.expiryDate" name="expiryDate" required></ion-datetime>
+    </ion-item>
+
+    <!-- ✅ Image Upload Field -->
+    <ion-item>
+      <ion-label>Upload Image</ion-label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!foodForm.form.valid">
+      Add Food
+    </ion-button>
+
+  </form>
+</ion-content>

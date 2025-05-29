@@ -1,0 +1,191 @@
+ion-content {
+    --background: #f8f9fa;
+    padding: 16px;
+  }
+  
+  ion-card,
+  ion-item {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+    background: white;
+  }
+  
+  ion-card-title,
+  h2, h3 {
+    font-weight: 600;
+    color: #222;
+  }
+  
+  ion-label p {
+    color: #666;
+    font-size: 14px;
+    margin: 2px 0;
+  }
+  
+  ion-button {
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  
+  ion-badge {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+  }
+  
+  img {
+    border-radius: 12px;
+    object-fit: cover;
+    max-height: 160px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .editing-form ion-item {
+    background-color: #f0f4f7;
+    border-radius: 12px;
+  }
+  
+  .editing-form ion-button {
+    margin-top: 10px;
+  }
+  #container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  .alert-button {
+    position: relative;
+  }
+  
+  .dot-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  ion-content {
+    --background: #f8f9fa;
+    padding: 16px;
+  }
+  
+  ion-card,
+  ion-item {
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+    background: white;
+  }
+  
+  ion-card-title,
+  h2, h3 {
+    font-weight: 600;
+    color: #222;
+  }
+  
+  ion-label p {
+    color: #666;
+    font-size: 14px;
+    margin: 2px 0;
+  }
+  
+  ion-button {
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  
+  ion-badge {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+  }
+  
+  img {
+    border-radius: 12px;
+    object-fit: cover;
+    max-height: 160px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .editing-form ion-item {
+    background-color: #f0f4f7;
+    border-radius: 12px;
+  }
+  
+  .editing-form ion-button {
+    margin-top: 10px;
+  }
+  
+  ion-toolbar {
+    background: linear-gradient(120deg, #38b6ff, #0077b6);
+    color: black;
+    --ion-color-primary: #0077b6;
+  }
+  
+  ion-toolbar:nth-child(2) ion-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  ion-toolbar:nth-child(2) ion-button {
+    flex: 1;
+    min-width: 90px;
+    justify-content: center;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin: 4px 4px;
+  }
+  
+  /* Style the icon + badge button (alerts) */
+  .alert-button {
+    position: relative;
+  }
+  
+  .dot-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  ion-toolbar:nth-child(2) ion-button {
+    font-size: 16px; /* 👈 increase this as needed */
+    font-weight: 600;
+    text-transform: capitalize;
+  }

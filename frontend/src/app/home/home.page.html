@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Smart Food Management App</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button routerLink="/add-food" routerDirection="forward">Add Food</ion-button>
+      <ion-button routerLink="/view-food" routerDirection="forward">View Food</ion-button>
+      <ion-button routerLink="/donate-food" routerDirection="forward">Donate Food</ion-button>
+      <ion-button routerLink="/donated-items" routerDirection="forward">Donation Items</ion-button>
+      <ion-button routerLink="/booked-items"> Cart
+        <ion-icon name="cart-outline" ></ion-icon>
+      </ion-button>
+
+      <ion-button routerLink="/reports" routerDirection="forward" class="alert-button">
+        Alert 
+        <ion-icon [name]="getAlertIcon()"></ion-icon>
+        <ion-badge *ngIf="hasUnseenAlerts()" color="danger" class="dot-badge"></ion-badge>
+      </ion-button>
+
+      <ion-button *ngIf="!user" routerLink="/signup" expand="block" color="primary">
+        Sign Up
+      </ion-button>
+      <ion-button *ngIf="!user" routerLink="/login" expand="block" color="medium">
+        Login
+      </ion-button>
+      <ion-button *ngIf="user" expand="block" color="danger" (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>Welcome to the Smart Food Management App</h2>
+  <p>Use the navigation above to manage your food items!</p>
+
+  <!-- 🌟 Hero Banner Card -->
+  <ion-card class="hero-banner">
+    <img src="assets/images/banner.jpeg" />
+    <ion-card-header>
+      <ion-card-title>Welcome to Waste-Free Kitchen</ion-card-title>
+      <ion-card-subtitle>Donate • Book • Reduce Waste</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <!-- 🌍 Mission Statement Box -->
+<ion-card class="mission-box">
+  <ion-card-header>
+    <ion-card-title>Our Mission</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Waste-Free Kitchen is dedicated to reducing food waste and hunger by connecting individuals,
+    bakeries, and restaurants with surplus food to those who need it. Every contribution matters.
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>
+
+<p *ngIf="user">Logged in as: {{ user.username }}</p>

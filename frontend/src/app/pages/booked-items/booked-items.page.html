@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Cart </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="bookedItems.length > 0; else noBookings">
+    <ion-item *ngFor="let item of bookedItems">
+      <img
+    *ngIf="item.image"
+    [src]="'http://localhost:5000/uploads/' + item.image"
+    class="food-image"
+  />
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Expiry: {{ item.expiryDate | date:'yyyy-MM-dd' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noBookings>
+    <p>You haven't booked any items yet.</p>
+  </ng-template>
+</ion-content>

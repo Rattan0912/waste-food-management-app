@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Alerts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="alerts.length > 0; else noAlerts">
+    <ion-item *ngFor="let alert of alerts">
+      <ion-label>
+        <h3>{{ alert.name }}</h3>
+        <p *ngIf="alert.bookedBy">You booked this item.</p>
+        <p *ngIf="alert.createdBy">Expiring soon: {{ alert.expiryDate | date }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noAlerts>
+    <p>No new alerts.</p>
+  </ng-template>
+</ion-content>
